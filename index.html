@@ -1,0 +1,58 @@
+<!DOCTYPE html> <!-- 声明 HTML5 文档类型 -->
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" /> <!-- UTF-8，支持中文 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- 响应式视口，适配多宽度 -->
+  <title>Liangsheng AIGC Lab</title>
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/header.js"></script>
+  <link rel="preload" href="images/首页背景.webp" as="image"><!-- 提前加载防屏闪 -->
+  <link rel="prefetch" href="ecommerce.html">
+  <link rel="prefetch" href="game.html">
+  <link rel="prefetch" href="ip.html">
+  <link rel="prefetch" href="illustration.html">
+  <link rel="prefetch" href="texture.html">
+</head>
+
+<body class="index">
+  <div class="unsupported-message"><!-- 小屏幕阻挡 -->
+    <p>页面暂不支持小屏访问，请使用大屏设备进行查看。</p>
+  </div>
+  <div class="site-content">
+    <header>
+      <div class="header-bg"></div>
+      <div class="header-inner"> 
+        <div class="logo">
+          <img src="images/logo.png" alt="liangsheng-logo" />
+        </div>
+        <nav>
+          <a href="index.html">首页</a>
+          <a href="ecommerce.html">电商</a>
+          <a href="game.html">游戏</a>
+          <a href="ip.html">周边</a>
+          <a href="illustration.html">插画</a>
+          <a href="texture.html">纹理</a>
+        </nav>
+      </div>
+    </header>
+
+    <section id="index">
+      <h1>关于我</h1>
+      <p>你好，我是梁笙，一名专注于AIGC多模态的独立创作者。我擅长的方向是基于ComfyUI，进行多模态工作流的本地化创建及应用。其中包括但不限于原生ComfyUI部署，Conda环境隔离，图像、音频、视频类工作流的搭建，模型微调以及自身独特的路径实现。也能够使用PS、PR、AE等软件对生成物进行进一步的修改。此外，我还可以基于AIGC多模态进行网页与轻量级APP的创建。</p>
+      <p>本作品集涵盖电商应用、游戏原型图、周边设计等多个方向，意图展现不同视角下的创作能力。相信在逻辑与效率并重的驱动模式下，将能为更多品牌方持续提供独特且高质量的解决方案。为适配网页加载速率，作品集图片大多采用Webp格式，此格式对画质有一定影响。</p>
+      <p>作品集所展示的绝大多数内容使用开源模型创作，其中包括sd3.5_large，flux1-dev，flux1-fill-dev，flux1-redux-dev，flux1-kontext-dev，ccsr，supir等模型，涉及汉字与视频的部分调用了jimengAPI。</p>
+      <p>未来预计开源针对flux1-kontext-dev等迁移模型难以创作内容的特定自训练Lora，以及众多CC0版权素材，敬请关注。</p>
+      <p>期待与更多志同道合的伙伴合作，共同探索AI设计的无限可能。</p>
+      <p>联系方式：cnliangsheng@gmail.com</p>
+    </section>
+
+    <footer>
+      此网站及其全部内容皆由AI辅助生成，本人依法享有完整版权，具体声明如下：<br />
+      © 2025 梁笙 版权所有。未经授权，禁止以任何形式复制、转载、发布、传播或以其他方式使用本作品的全部或部分内容。所有涉及的文字、图片、设计、图标及相关内容均受版权法保护。
+    </footer>
+  </div>
+</body>
+
+</html>
