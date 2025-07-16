@@ -1,0 +1,837 @@
+/* 全局内容 */
+/* 引入本地字体 */
+@font-face {
+  font-family: 'SourceHanSansCN-VF';
+  /* 自定义字体名称 */
+  src: url('../fonts/SourceHanSansCN-VF.woff2') format('woff2');
+  /* 字体文件路径，指定字体格式 */
+}
+
+/* 全局元素样式 */
+html {
+  width: 100%;
+  /* 撑满视口宽度 */
+  height: 100%;
+  /* 撑满视口高度 */
+  margin: 0;
+  /* 去除默认外边距 */
+  padding: 0;
+  /* 去除默认内边距 */
+}
+
+body {
+  display: flex;
+  /* 启用弹性盒子，默认横向 */
+  flex-direction: column;
+  /* 子元素垂直排列 */
+  width: 100%;
+  /* 宽度 */
+  height: 100%;
+  /* 高度 */
+  margin: 0;
+  /* 去除默认外边距 */
+  padding: 0;
+  /* 去除默认内边距 */
+  font-family: 'SourceHanSansCN-VF';
+  /* 字体 */
+  background: #000000;
+  /* 背景颜色 */
+  color: #ffffff;
+  /* 字体颜色 */
+  line-height: 1.72;
+  /* 行高 */
+}
+
+/* 全局图片视频元素样式 */
+img,
+video {
+  width: 100%;
+  /* 宽度 */
+  height: 100%;
+  /* 高度 */
+  object-fit: cover;
+  /* 缩放到父级大小并裁切 */
+  display: block;
+  /* 消除底部空白间隙 */
+  -ms-user-select: none;
+  /* IE/Edge 专用：禁止用户选中 */
+  -moz-user-select: none;
+  /* Firefox 专用：禁止用户选中 */
+  -webkit-user-select: none;
+  /* Chrome/Safari 专用：禁止用户选中 */
+  user-select: none;
+  /* 禁止用户选中 */
+  -webkit-user-drag: none;
+  /* Chrome/Safari 专用：禁止拖动图片或视频 */
+  pointer-events: none;
+  /* 禁止所有鼠标事件（点击、右键、拖动、悬停等） */
+}
+
+/* 默认隐藏“小屏幕不支持”的提示文本 */
+.unsupported-message {
+  display: none;
+}
+
+/* 小屏幕（最大宽度不超过961px）时的响应式处理 */
+@media screen and (max-width: 961px) {
+
+  /* 隐藏主内容 */
+  .site-content {
+    display: none;
+  }
+
+  /* 显示小屏提示信息 */
+  .unsupported-message {
+    display: flex;
+    /* 启用弹性盒子，默认横向 */
+    width: 100%;
+    /* 宽度 */
+    height: 100%;
+    /* 高度 */
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 垂直居中 */
+    background: #000000;
+    /* 背景颜色 */
+    color: #ffffff;
+    /* 字体颜色 */
+    font-size: 18px;
+    /* 适合提示语阅读的字体大小 */
+  }
+}
+
+/* 超链接样式 */
+a {
+  color: #ffffff;
+  /* 字体颜色 */
+  text-decoration: none;
+  /* 去除默认下划线 */
+  cursor: pointer;
+  /* 鼠标悬停时显示指针，表示可点击 */
+}
+
+/* 顶部导航栏区域 */
+header {
+  position: fixed;
+  /* 固定在浏览器窗口中，不随滚动条移动 */
+  top: 0;
+  /* 紧贴页面顶部 */
+  left: 0;
+  /* 紧贴页面左边 */
+  width: 100%;
+  /* 宽度 */
+  height: 100px;
+  /* 高度 */
+  z-index: 1000;
+  /* 提高层级 */
+}
+
+/* 背景容器 */
+.header-bg {
+  position: absolute;
+  /* 绝对定位 */
+  top: 0;
+  /* 顶部对齐header */
+  left: 0;
+  /* 左侧对齐header */
+  width: 100%;
+  /* 宽度 */
+  height: 100%;
+  /* 高度 */
+  background-color: #000000;
+  /* 纯黑色背景 */
+  will-change: transform;
+  /* 告诉浏览器此元素将要频繁改变transform，提高渲染性能 */
+  transform: translate3d(0, 0, 0);
+  /* 默认位置，同时触发 GPU 加速与独立复合层渲染 */
+  transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1) 0.15s;
+  /* transform属性过渡动画 */
+}
+
+/* 内容容器 */
+.header-inner {
+  display: flex;
+  /* 启用弹性盒子，默认横向 */
+  position: relative;
+  /* 相对定位 */
+  height: 100%;
+  /* 高度 */
+  margin: 0 auto;
+  /* 水平居中 */
+  max-width: 1400px;
+  /* 最大宽度限制 */
+  justify-content: flex-start;
+  /* 内容左对齐 */
+  flex-wrap: nowrap;
+  /* 禁止换行，所有内容保持一行 */
+  align-items: center;
+  /* 子元素垂直居中 */
+  padding: 0 40px;
+  /* 内边距 */
+  box-sizing: border-box;
+  /* 包含内边距在宽度内计算 */
+  margin-top: -2px;
+  /* 微调整体位置，向上偏移 */
+  -ms-user-select: none;
+  /* IE/Edge 专用：禁止用户选中 */
+  -moz-user-select: none;
+  /* Firefox 专用：禁止用户选中 */
+  -webkit-user-select: none;
+  /* Chrome/Safari 专用：禁止用户选中 */
+  user-select: none;
+  /* 禁止用户选中 */
+  opacity: 1;
+  /* 初始透明度 */
+  transition: opacity 0.2s linear 0.1s;
+  /* 透明度过渡动画 */
+}
+
+/* 背景容器恢复到原始位置，完全显示 */
+header.show .header-bg {
+  transform: translate3d(0, 0, 0);
+  /* 不移动，显示在正常位置 */
+}
+
+/* 内容容器完全不透明，文字内容渐显 */
+header.show .header-inner {
+  opacity: 1;
+  /* 文字完全可见 */
+  transition-delay: 0.25s;
+  /* 延迟开始透明度动画，确保背景先滑入 */
+}
+
+/* 背景容器向上移动一个完整的高度，实现滑出效果 */
+header.hide .header-bg {
+  transform: translate3d(0, -100%, 0);
+  /* 背景向上滑出视口，隐藏 */
+}
+
+/* 内容容器透明度为 0，实现淡出效果 */
+header.hide .header-inner {
+  opacity: 0;
+  /* 内容完全透明，看不见 */
+}
+
+/* 禁止所有鼠标事件，防止用户误操作 */
+header.hide {
+  pointer-events: none;
+  /* 禁止点击和悬停事件 */
+}
+
+/* logo图片样式 */
+.logo img {
+  height: 64px;
+  /* 图片高度 */
+  width: auto;
+  /* 宽度自适应，保持比例 */
+  margin-right: 50px;
+  /* 与右侧菜单保持间距 */
+}
+
+/* 导航链接容器 */
+nav {
+  display: flex;
+  /* 启用弹性盒子，默认横向 */
+  gap: 32px;
+  /* 导航链接间隔 */
+  margin-top: 15px;
+  /* 整体向下偏移 */
+}
+
+/* 导航链接基础样式 */
+nav a {
+  position: relative;
+  /* 相对定位 */
+  font-weight: 500;
+  /* 字重 */
+  font-size: 14px;
+  /* 字号 */
+  letter-spacing: 1px;
+  /* 字间距 */
+  color: #ffffff;
+  /* 字体颜色 */
+  padding-bottom: 4px;
+  /* 为下划线腾出空间 */
+}
+
+/* 下划线动画，初始状态隐藏 */
+nav a::after {
+  content: '';
+  /* 创建一个空内容的伪元素 */
+  position: absolute;
+  /* 绝对定位 */
+  bottom: 0;
+  /* 紧贴文字底部 */
+  left: 0;
+  /* 从最左开始绘制 */
+  width: 100%;
+  /* 下滑线宽度等于链接宽度 */
+  height: 2px;
+  /* 下划线厚度 */
+  background-color: #ffffff;
+  /* 下划线颜色 */
+  transform: scaleX(0);
+  /* 横向缩放为0，看不见 */
+  transform-origin: right;
+  /* 缩放锚点在右 → 让它向右缩回去 */
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* 缓动动画 */
+}
+
+/* 鼠标悬停时下划线展开 */
+nav a:hover::after {
+  transform-origin: left;
+  /* 展开时左端固定 */
+  transform: scaleX(1);
+  /* 横向放大，显示完整下划线 */
+}
+
+/* 首页内容 */
+/* 首页专属样式 */
+body.index {
+  background-color: rgba(0, 0, 0, 0.5);
+  /* 添加遮罩 */
+  background-image: url('../images/首页背景.webp');
+  /* 背景路径 */
+  background-blend-mode: darken;
+  /* 混合模式 */
+  background-size: 150% auto;
+  /* 背景图大小 */
+  background-position: left -250px top -10px;
+  /* 背景图偏移 */
+  justify-content: center;
+  /* 水平居中 */
+  align-items: center;
+  /* 垂直居中 */
+}
+
+/* 中部主页区域 */
+#index {
+  max-width: 1000px;
+  /* 内容最大宽度 */
+  margin: auto;
+  /* 居中 */
+  padding: 0px 50px;
+  /* 上下、左右内边距 */
+  margin-top: -40px;
+  margin-left: 20px;
+}
+
+/* 主标题 */
+#index h1 {
+  font-size: 28px;
+  /* 字号 */
+  font-weight: 700;
+  /* 字体 */
+  margin-bottom: 22px;
+  /* 下方外边距 */
+}
+
+/* 正文段落 */
+#index p {
+  font-size: 16px;
+  /* 字号 */
+  font-weight: 300;
+  /* 字体 */
+  margin-bottom: 20px;
+  /* 下方外边距 */
+  white-space: pre-line;
+  /* 支持换行符折行显示 */
+}
+
+/* 底部版权信息区域 */
+footer {
+  position: fixed;
+  /* 固定在浏览器窗口中，不随滚动条移动 */
+  left: 0;
+  /* 左侧对齐body */
+  bottom: 0;
+  /* 底部对齐body */
+  width: 100%;
+  /* 宽度占满整个视口 */
+  box-sizing: border-box;
+  /* 包含内边距在宽度内计算 */
+  padding: 20px 40px;
+  /* 内边距上下，左右 */
+  text-align: center;
+  /* 文字居中 */
+  font-size: 12px;
+  /* 字号 */
+  background-color: #000000;
+  /* 背景颜色 */
+  color: #555555;
+  /* 字体颜色 */
+  -ms-user-select: none;
+  /* IE/Edge 专用：禁止用户选中 */
+  -moz-user-select: none;
+  /* Firefox 专用：禁止用户选中 */
+  -webkit-user-select: none;
+  /* Chrome/Safari 专用：禁止用户选中 */
+  user-select: none;
+  /* 禁止用户选中 */
+}
+
+/* 通用内容 */
+/* 通用总容器 */
+.page-section {
+  display: flex;
+  /* 启用弹性盒子，默认横向 */
+  flex-direction: column;
+  /* 子元素垂直排列，即从上到下 */
+  width: 100%;
+  /* 宽度 */
+}
+
+/* 通用单轮播容器样式 */
+.carousel {
+  display: flex;
+  /* 启用弹性盒子，默认横向 */
+  width: 100%;
+  /* 宽度 */
+  height: 96vh;
+  /* 高度 */
+  position: relative;
+  /* 相对定位 */
+  overflow: hidden;
+  /* 隐藏溢出内容 */
+}
+
+/* 通用轮播滑动轨道 */
+.carousel-wrapper {
+  display: flex;
+  /* 横向排列子元素 */
+  height: 100%;
+  /* 高度 */
+  transition: transform 0.6s cubic-bezier(.19, 1, .22, 1);
+  /* 切换动画效果 */
+}
+
+/* 通用单张幻灯片 */
+.carousel-slide {
+  display: flex;
+  /* 启用弹性盒子，默认横向 */
+  flex-shrink: 0;
+  /* 不收缩，保持原始宽度 */
+  width: 100vw;
+  /* 宽度 */
+  height: 100%;
+  /* 高度 */
+  position: relative;
+  /* 相对定位 */
+}
+
+/* 通用包裹容器样式 */
+.vi-wrapper {
+  overflow: hidden;
+  /* 隐藏溢出区域 */
+  z-index: 2;
+  /* 层级 */
+  position: relative;
+  /* 相对定位 */
+  top: 50%;
+  /* 距离顶部 */
+  left: 50%;
+  /* 距离左边 */
+  transform: translate(-50%, -50%);
+  /* 图片对准 */
+  width: 100%;
+  /* 宽度 */
+  height: 100%;
+  /* 高度 */
+}
+
+/* 通用配文框样式 */
+.carousel-caption {
+  position: absolute;
+  /* 绝对定位 */
+  z-index: 2;
+  /* 显示在图片上方 */
+  -ms-user-select: none;
+  /* IE/Edge 专用：禁止用户选中 */
+  -moz-user-select: none;
+  /* Firefox 专用：禁止用户选中 */
+  -webkit-user-select: none;
+  /* Chrome/Safari 专用：禁止用户选中 */
+  user-select: none;
+  /* 禁止用户选中 */
+  pointer-events: none;
+  /* 禁止所有鼠标事件（点击、右键、拖动、悬停等） */
+  line-height: 1.25;
+  /* 行高 */
+}
+
+/* 非主页标题与文字样式 */
+.carousel-title {
+  font-size: 36px;
+  /* 字号 */
+  font-weight: 700;
+  /* 字体 */
+  margin-bottom: 18px;
+  /* 下方外边距 */
+}
+
+.carousel-text {
+  font-size: 16px;
+  /* 字号 */
+  font-weight: 400;
+  /* 字体 */
+  margin-bottom: 5px;
+  /* 下方外边距 */
+  white-space: pre-line;
+  /* 支持换行符折行显示 */
+}
+
+/* 左右箭头样式 */
+.carousel-arrow {
+  position: absolute;
+  /* 绝对定位 */
+  top: 96%;
+  /* 距离父元素顶部距离 */
+  transform: translateY(-50%);
+  /* 精准垂直居中 */
+  background: none;
+  /* 无背景 */
+  border: none;
+  /* 无边框 */
+  width: 48px;
+  /* 按钮宽度 */
+  height: 48px;
+  /* 按钮高度 */
+  cursor: pointer;
+  /* 鼠标指针变为手型 */
+  z-index: 3;
+  /* 显示在内容上方 */
+  display: flex;
+  /* 启用弹性盒子，默认横向 */
+  align-items: center;
+  /* 子元素垂直居中对齐 */
+  justify-content: center;
+  /* 子元素水平居中对齐 */
+  transition: opacity 0.4s ease, filter 0.4s ease;
+  /* 平滑过渡 */
+}
+
+/* 左箭头样式 */
+.carousel-arrow.left {
+  left: 45px;
+  /* 左边距 */
+}
+
+/* 右箭头样式 */
+.carousel-arrow.right {
+  right: 45px;
+  /* 右边距 */
+}
+
+/* 左右箭头图标样式 */
+.carousel-arrow img {
+  max-width: none;
+  /* 最大宽度 */
+  max-height: none;
+  /* 最大高度 */
+  width: 48px;
+  /* 图片宽度 */
+  height: 32px;
+  /* 图片高度 */
+  object-fit: fill;
+  /* 强制拉伸填充 */
+  transition: filter 0.5s ease, opacity 0.5s ease;
+  /* 灰置动画效果 */
+}
+
+/* 右侧图标水平翻转 */
+.carousel-arrow.right img {
+  transform: scaleX(-1);
+}
+
+/* 左右箭头禁用样式 */
+.carousel-arrow.disabled {
+  cursor: default;
+  /* 鼠标指针变为默认箭头，表示不可点击 */
+  pointer-events: none;
+  /* 禁止所有鼠标事件，完全禁止点击交互 */
+}
+
+/* 左右箭头禁用图片样式 */
+.carousel-arrow.disabled img {
+  filter: grayscale(1) brightness(0.6);
+  /* 将图像变为灰色，并降低亮度 */
+  opacity: 0.5;
+  /* 图像透明度 */
+}
+
+/* 小圆点导航容器 */
+.carousel-dots {
+  position: absolute;
+  /* 绝对定位 */
+  bottom: 40px;
+  /* 底部距离 */
+  left: 50%;
+  /* 水平居中 */
+  transform: translateX(-50%);
+  /* 精准居中 */
+  display: flex;
+  /* 横向排列圆点 */
+  gap: 10px;
+  /* 圆点间距 */
+  z-index: 3;
+  /* 显示在最上层 */
+}
+
+/* 小圆点外观 */
+.carousel-dots button {
+  width: 10px;
+  /* 宽度 */
+  height: 10px;
+  /* 高度 */
+  border-radius: 50%;
+  /* 圆形 */
+  border: none;
+  /* 去除边框 */
+  background-color: #aaaaaa;
+  /* 默认灰色 */
+}
+
+/* 小圆点活动外观 */
+.carousel-dots button.active {
+  background-color: #ffffff;
+  /* 当前页为白色 */
+}
+
+/* 电商内容 */
+/* 电商配文位置 */
+.carousel-caption-1-1 {
+  top: 69%;
+  /* 距离父元素顶部距离 */
+  left: 32%;
+  /* 距离父元素左侧距离 */
+  transform: translate(-50%, -50%);
+  /* 文字对准 */
+}
+
+.carousel-caption-1-2 {
+  top: 67.5%;
+  /* 距离父元素顶部距离 */
+  left: 25%;
+  /* 距离父元素左侧距离 */
+  transform: translate(-50%, -50%);
+  /* 文字对准 */
+}
+
+.carousel-caption-1-3 {
+  top: 64%;
+  /* 距离父元素顶部距离 */
+  left: 35%;
+  /* 距离父元素左侧距离 */
+  transform: translate(-50%, -50%);
+  /* 文字对准 */
+}
+
+.carousel-caption-2-1 {
+  top: 64%;
+  /* 距离父元素顶部距离 */
+  left: 66%;
+  /* 距离父元素左侧距离 */
+  transform: translate(-50%, -50%);
+  /* 文字对准 */
+}
+
+.carousel-caption-2-2 {
+  top: 63%;
+  /* 距离父元素顶部距离 */
+  left: 63%;
+  /* 距离父元素左侧距离 */
+  transform: translate(-50%, -50%);
+  /* 文字对准 */
+}
+
+.carousel-caption-2-3 {
+  top: 61%;
+  /* 距离父元素顶部距离 */
+  left: 65%;
+  /* 距离父元素左侧距离 */
+  transform: translate(-50%, -50%);
+  /* 文字对准 */
+}
+
+.carousel-caption-2-4 {
+  top: 62%;
+  /* 距离父元素顶部距离 */
+  left: 64%;
+  /* 距离父元素左侧距离 */
+  transform: translate(-50%, -50%);
+  /* 文字对准 */
+}
+
+.carousel-caption-2-5 {
+  top: 56%;
+  /* 距离父元素顶部距离 */
+  left: 66%;
+  /* 距离父元素左侧距离 */
+  transform: translate(-50%, -50%);
+  /* 文字对准 */
+}
+
+.carousel-caption-3-1 {
+  top: 56%;
+  /* 距离父元素顶部距离 */
+  left: 28%;
+  /* 距离父元素左侧距离 */
+  transform: translate(-50%, -50%);
+  /* 文字对准 */
+}
+
+.carousel-caption-3-2 {
+  top: 60%;
+  /* 距离父元素顶部距离 */
+  left: 38.5%;
+  /* 距离父元素左侧距离 */
+  transform: translate(-50%, -50%);
+  /* 文字对准 */
+}
+
+.carousel-caption-3-3 {
+  top: 54%;
+  /* 距离父元素顶部距离 */
+  left: 37%;
+  /* 距离父元素左侧距离 */
+  transform: translate(-50%, -50%);
+  /* 文字对准 */
+}
+
+/* 电商配文颜色 */
+.carousel-title-ds{
+  color: #626262;
+  /* 字体颜色 */
+}
+
+.carousel-text-ds{
+  color: #626262;
+  /* 字体颜色 */ 
+}
+
+/* 游戏内容 */
+/* 游戏配文位置 */
+.carousel-caption-4-1 {
+  top: 52%;
+  /* 距离父元素顶部距离 */
+  left: 25%;
+  /* 距离父元素左侧距离 */
+  transform: translate(-50%, -50%);
+  /* 文字对准 */
+}
+
+.carousel-caption-5-1 {
+  top: 55%;
+  /* 距离父元素顶部距离 */
+  left: 55%;
+  /* 距离父元素左侧距离 */
+  transform: translate(-50%, -50%);
+  /* 文字对准 */
+}
+
+.carousel-caption-5-2 {
+  top: 55%;
+  /* 距离父元素顶部距离 */
+  left: 55%;
+  /* 距离父元素左侧距离 */
+  transform: translate(-50%, -50%);
+  /* 文字对准 */
+}
+
+.carousel-caption-5-3 {
+  top: 55%;
+  /* 距离父元素顶部距离 */
+  left: 55%;
+  /* 距离父元素左侧距离 */
+  transform: translate(-50%, -50%);
+  /* 文字对准 */
+}
+
+/* 周边内容 */
+/* 单屏轮播单元样式 */
+.carousel-1 {
+  height: 100vh;
+  /* 高度 */
+}
+
+/* 周边包裹容器样式 */
+.vi-wrapper-zb {
+  width: 41%;
+  /* 宽度 */
+  height: 72%;
+  /* 高度 */
+}
+
+/* 周边文字位置 */
+.carousel-caption-zb {
+  top: 88.3%;
+  /* 距离父元素顶部距离 */
+  left: 50%;
+  /* 距离父元素左侧距离 */
+  transform: translate(-50%, -50%);
+  /* 文字对准 */
+}
+
+/* 周边文字样式 */
+.carousel-text-zb {
+  font-size: 15px;
+  /* 字号 */
+  font-weight: 500;
+  /* 字体 */
+}
+
+/* 插画内容 */
+/* 插画包裹容器样式 */
+.vi-wrapper-ch {
+  width: 41%;
+  /* 宽度 */
+  height: 72%;
+  /* 高度 */
+}
+
+/* 插画文字位置 */
+.carousel-caption-ch {
+  top: 88.3%;
+  /* 距离父元素顶部距离 */
+  left: 50%;
+  /* 距离父元素左侧距离 */
+  transform: translate(-50%, -50%);
+  /* 文字对准 */
+}
+
+/* 插画文字样式 */
+.carousel-text-ch {
+  font-size: 15px;
+  /* 字号 */
+  font-weight: 500;
+  /* 字体 */
+}
+
+/* 纹理内容 */
+/* 纹理包裹容器样式 */
+.vi-wrapper-wl {
+  width: 36%;
+  /* 宽度 */
+  height: 64%;
+  /* 高度 */
+}
+
+/* 纹理文字位置 */
+.carousel-caption-wl {
+  top: 85%;
+  /* 距离父元素顶部距离 */
+  left: 50%;
+  /* 距离父元素左侧距离 */
+  transform: translate(-50%, -50%);
+  /* 文字对准 */
+}
+
+/* 纹理文字样式 */
+.carousel-text-wl {
+  font-size: 15px;
+  /* 字号 */
+  font-weight: 600;
+  /* 字体 */
+}
