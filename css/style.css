@@ -3,7 +3,7 @@
 @font-face {
   font-family: 'SourceHanSansCN-VF';
   /* 自定义字体名称 */
-  src: url('../fonts/SourceHanSansCN-VF.woff2') format('woff2');
+  src: url('https://cnliangsheng.oss-cn-hangzhou.aliyuncs.com/fonts/SourceHanSansCN-VF.woff2') format('woff2');
   /* 字体文件路径，指定字体格式 */
 }
 
@@ -292,7 +292,7 @@ nav a:hover::after {
 body.index {
   background-color: rgba(0, 0, 0, 0.5);
   /* 添加遮罩 */
-  background-image: url('../images/首页背景.webp');
+  background-image: url('https://cnliangsheng.oss-cn-hangzhou.aliyuncs.com/images/首页背景.webp');
   /* 背景路径 */
   background-blend-mode: darken;
   /* 混合模式 */
